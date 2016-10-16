@@ -11,8 +11,8 @@ Also, it has the design of a wizard or budget planner which prints out a PDF doc
 ### How do I get set up? ###
 
 * Download
-* Look for the /db/schema.sql
-* Then can use the /db/data.sql for inserting some basic data
+* Look for the */db/schema.sql*
+* Then can use the */db/data.sql* for inserting some basic data
 * Check for connectionStrings & configurations
 * Compile & Run
 
@@ -21,9 +21,9 @@ Also, it has the design of a wizard or budget planner which prints out a PDF doc
 
 * Use: ASP.NET MVC 4 with the Web API
 * JavaScript, jQuery, KnockoutJS (just few scripts)
-* Has a Library for connecting to the some APIs like iTunes, Twitter and others feeds
+* Has a Library for connecting to some APIs like iTunes, Twitter and others feeds
 * Use a pre-assembled template
-* NUnit + Autofac + AutoFixture for a TDD approach. Most of the tests are missing.
+* NUnit + Autofac + AutoFixture for a TDD approach.
 
 
 ### Screen ###
