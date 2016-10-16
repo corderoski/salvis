@@ -1,0 +1,39 @@
+﻿@using Salvis.Resources
+
+@{
+    ViewBag.Title = "MailCompose";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model Salvis.App.Web.Models.MessageModel
+
+<div class="message">
+
+    @using (Ajax.BeginForm("SendCompose", "Message", new AjaxOptions { InsertionMode = InsertionMode.Replace, HttpMethod = "POST", OnBegin = "operationBegin", OnSuccess = "operationComplete" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="head">
+            <div class="subject">
+                @Html.TextBoxFor(p => p.Subject, new { placeholder = Texts.Mailing_Subject_Placeholder })
+            </div>
+        </div>
+        <div class="to">
+            <div class="form-group">
+                <label class="col-sm-1 control-label">@Texts.Mailing_To:</label>
+                <div class="col-sm-11">
+                    <h2 class="control-label">@Html.DisplayFor(p => p.FromUserName) </h2>
+                    @Html.HiddenFor(p => p.FromUserId)
+                    @Html.HiddenFor(p => p.Id)
+                </div>
+            </div>
+        </div>
+        <div class="mail editor">
+            @Html.TextAreaFor(p => p.Content, new { style = "height: 250px;", @class = "form-control message-text", id = "textarea-Componse" })
+
+            <div class="form-group">
+                <button class="btn btn-success" type="submit"><i class="fa fa-envelope"></i>@Texts.Mailing_Send</button>
+                <a href="@Url.Action("Details", new { Model.Id })" class="btn btn-danger"><i class="fa fa-times"></i>@Texts.Cancel</a>
+            </div>
+        </div>
+    }
+</div>
+

@@ -1,0 +1,84 @@
+﻿@using Salvis.Resources
+@using Salvis.App.Web.Helpers
+@model Salvis.App.Web.Models.GoalModel
+
+<div class="col-md-12 col-lg-12">
+    @using (Ajax.BeginForm("AddGoal", "Debt", new AjaxOptions { InsertionMode = InsertionMode.Replace, HttpMethod = "POST", OnBegin = "Salvis.UI.operationBegin", OnSuccess = "Salvis.UI.operationComplete" }, new { Id = "formAddGoals", @class = "form-horizontal" }))
+    {
+        <div class="md-content">
+            <div class="modal-header">
+                <h3>@Texts.Add</h3>
+                <button type="button" class="close md-close" data-dismiss="modal" aria-hidden="true">
+                    &times;</button>
+            </div>
+            <div id="modal-form-add-body" class="modal-body">
+                <div class="row">
+                    <div class="col-sm-8">@Html.Label(Texts.Title)</div>
+                    <div class="clearfix"></div>
+                    <div class="col-sm-12 col-md-12">
+                        @Html.TextBoxFor(p => p.Name, new Dictionary<string, object> { { "Class", "form-control" }, { "required", "required" }, { "placeHolder", "Toyota!" } })
+                    </div>
+                </div>
+                <div class="row" data-bind="visible : showingMore">
+                    <div class="col-sm-8">@Html.Label(Texts.Goal_DebtDateInit)</div>
+                    <div class="clearfix"></div>
+                    <div class="col-sm-8 col-md-8">
+                        <div class="input-group date datetime " data-min-view="2" data-date-format="@Html.GetCurrentCultureDateFormat()">
+                            @Html.TextBoxFor(p => p.StartDate, new Dictionary<string, object> { { "Class", "form-control" }, { "placeHolder", "01/01/2015" } })
+                            <span class="input-group-addon btn btn-primary"><span class="glyphicon glyphicon-calendar"></span></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-8">@Html.Label(Texts.Goal_DebtDateEnd)</div>
+                    <div class="clearfix"></div>
+                    <div class="col-sm-8 col-md-8">
+                        <div class="input-group date datetime" data-min-view="2" data-date-format="@Html.GetCurrentCultureDateFormat()">
+                            @Html.TextBoxFor(p => p.EndDate, new Dictionary<string, object>() { { "class", "form-control" }, { "required", "required" }, { "placeHolder", "14/02/2016" } })
+                            <span class="input-group-addon btn btn-primary"><span class="glyphicon glyphicon-calendar"></span></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" data-bind="visible : showingMore">
+                    <div class="col-sm-10 col-md-10">@Html.Label(Texts.Goal_WichTimeInterval)</div>
+                    <div class="clearfix"></div>
+                    <div class="col-sm-12 col-md-12">
+                        @Html.DropDownListFor(p => p.TimeType, (SelectList)ViewBag.Interval, @Texts.SelectOption, new Dictionary<string, object>() { { "Class", "select" } })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-10 col-md-10">
+                        @Html.Label(Texts.Goal_WhatAmount)
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="col-sm-8 col-md-8">
+                        <div class="input-group">
+                            <span class="input-group-addon">$</span>
+                            @Html.TextBoxFor(p => p.Amount, new Dictionary<string, object> { { "Class", "form-control" }, { "type", "number" }, { "required", "required" }, { "placeHolder", "999.95" } })
+                        </div>
+                    </div>
+                </div>
+                <div class="row" data-bind="visible : showingMore">
+                    <div class="col-sm-10 col-md-10">@Html.Label(Texts.Goal_WhatDescription)</div>
+                    <div class="clearfix"></div>
+                    <div class="col-sm-12 col-md-12">
+                        @Html.TextAreaFor(p => p.Description, new Dictionary<string, object> { { "Class", "form-control" }, { "placeHolder", @Texts.Description } })
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <div class="col-sm-3">
+                    <a href="#" data-salvis="alterComponents" style="font-size: 9pt;">@Texts.More</a>
+                </div>
+                <button type="button" class="btn btn-default btn-flat md-close" data-dismiss="modal">@Texts.Cancel</button>
+                <button type="submit" class="btn btn-primary btn-flat" data-dismiss="modal">@Texts.Save</button>
+                <div class="clearfix">
+                    <a href="@Url.Action("Add")" class="label label-info" style="font-size: 9pt;float:left;">@Texts.AdvancedOptions</a>
+                </div>
+            </div>
+        </div>
+        @Html.AntiForgeryToken()
+    }
+</div>
+

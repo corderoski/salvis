@@ -1,0 +1,540 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Account_ChangePasswordSuccess" xml:space="preserve">
+    <value>Change of password successed.</value>
+  </data>
+  <data name="Account_DontHaveAccount" xml:space="preserve">
+    <value>¿Don't have an account?</value>
+  </data>
+  <data name="Account_DuplicateEmail" xml:space="preserve">
+    <value>A user name for that e-mail address already exists. Please enter a different e-mail address.</value>
+  </data>
+  <data name="Account_DuplicateUserName" xml:space="preserve">
+    <value>User name already exists. Please enter a different user name.</value>
+  </data>
+  <data name="Account_ErrorInDelete" xml:space="preserve">
+    <value>Account_ErrorInDelete</value>
+  </data>
+  <data name="Account_InputUserName" xml:space="preserve">
+    <value>Type your user:</value>
+  </data>
+  <data name="Account_InvalidEmail" xml:space="preserve">
+    <value>The e-mail address provided is invalid. Please check the value and try again.</value>
+  </data>
+  <data name="Account_InvalidPassword" xml:space="preserve">
+    <value>The password provided is invalid. Please enter a valid password value.</value>
+  </data>
+  <data name="Account_InvalidUserName" xml:space="preserve">
+    <value>The user name provided is invalid. Please check the value and try again.</value>
+  </data>
+  <data name="Account_NewPassword" xml:space="preserve">
+    <value>New password</value>
+  </data>
+  <data name="Account_PasswordConfirmationSent" xml:space="preserve">
+    <value>A confirmation e-mail has been sent to you. Go check.</value>
+  </data>
+  <data name="Account_ProviderError" xml:space="preserve">
+    <value>The authentication provider returned an error. Please verify your entry and try again. If the problem persists, please contact your system administrator.</value>
+  </data>
+  <data name="Account_ResetPassword" xml:space="preserve">
+    <value>Reset password</value>
+  </data>
+  <data name="Account_TitleRegister" xml:space="preserve">
+    <value>Create a new account</value>
+  </data>
+  <data name="Account_UserRejected" xml:space="preserve">
+    <value>The user creation request has been canceled. Please verify your entry and try again. If the problem persists, please contact your system administrator.</value>
+  </data>
+  <data name="Action" xml:space="preserve">
+    <value>Action</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="AdvancedOptions" xml:space="preserve">
+    <value>Full view</value>
+  </data>
+  <data name="Amount" xml:space="preserve">
+    <value>Amount</value>
+  </data>
+  <data name="Apps_BudgetPlanner" xml:space="preserve">
+    <value>Apps_BudgetPlanner</value>
+  </data>
+  <data name="Audits" xml:space="preserve">
+    <value>Audits</value>
+  </data>
+  <data name="BadCredentials" xml:space="preserve">
+    <value>The user name or password provided is incorrect.</value>
+  </data>
+  <data name="BiWeekly" xml:space="preserve">
+    <value>BiWeekly</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Category" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="Configurations" xml:space="preserve">
+    <value>Configurations</value>
+  </data>
+  <data name="ConfirmPassword" xml:space="preserve">
+    <value>Confirm Password</value>
+  </data>
+  <data name="Currency" xml:space="preserve">
+    <value>Currency</value>
+  </data>
+  <data name="Dashboard" xml:space="preserve">
+    <value>Dashboard</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="Debt" xml:space="preserve">
+    <value>Debt</value>
+  </data>
+  <data name="Debts" xml:space="preserve">
+    <value>Debts</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="Dialy" xml:space="preserve">
+    <value>Dialy</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="ErrorInternal" xml:space="preserve">
+    <value>Ops! We got an internal error, try again.</value>
+  </data>
+  <data name="ErrorInValidation" xml:space="preserve">
+    <value>Error in validation.</value>
+  </data>
+  <data name="Error_InputInvalid" xml:space="preserve">
+    <value>Error_InputInvalid</value>
+  </data>
+  <data name="Error_VerifyAndTry" xml:space="preserve">
+    <value>An unknown error occurred. Please verify your entry and try again. If the problem persists, please contact your system administrator.</value>
+  </data>
+  <data name="ExpectedAmount" xml:space="preserve">
+    <value>Expected Amount</value>
+  </data>
+  <data name="ExtResources" xml:space="preserve">
+    <value>Ext. Resources</value>
+  </data>
+  <data name="Fee" xml:space="preserve">
+    <value>Fee</value>
+  </data>
+  <data name="FieldsRequired" xml:space="preserve">
+    <value>Fields with asterik (*) are required.</value>
+  </data>
+  <data name="FinalDate" xml:space="preserve">
+    <value>Final Date</value>
+  </data>
+  <data name="Goal" xml:space="preserve">
+    <value>Goal</value>
+  </data>
+  <data name="Goals" xml:space="preserve">
+    <value>Goals</value>
+  </data>
+  <data name="Goal_DebtCreated" xml:space="preserve">
+    <value>Your debt has been created successfully! You can start to manage their quota.</value>
+  </data>
+  <data name="Goal_DebtDateEnd" xml:space="preserve">
+    <value>To</value>
+  </data>
+  <data name="Goal_DebtDateInit" xml:space="preserve">
+    <value>From</value>
+  </data>
+  <data name="Goal_Details" xml:space="preserve">
+    <value>Goal_Details</value>
+  </data>
+  <data name="Goal_MsgDeleteGoal" xml:space="preserve">
+    <value>Are you sure about delete this goal?</value>
+  </data>
+  <data name="Goal_RecurrentCreated" xml:space="preserve">
+    <value>Goal_RecurrentCreated</value>
+  </data>
+  <data name="Goal_RecurrentDateEnd" xml:space="preserve">
+    <value>Goal_RecurrentDateEnd</value>
+  </data>
+  <data name="Goal_RecurrentDateInit" xml:space="preserve">
+    <value>Goal_RecurrentDateInit</value>
+  </data>
+  <data name="Goal_RecurrentWhatAmount" xml:space="preserve">
+    <value>Goal_RecurrentWhatAmount</value>
+  </data>
+  <data name="Goal_RecurrentWichCategory" xml:space="preserve">
+    <value>Goal_RecurrentWichCategory</value>
+  </data>
+  <data name="Goal_RecurrentWichTimeIterval" xml:space="preserve">
+    <value>Goal_RecurrentWichTimeIterval</value>
+  </data>
+  <data name="Goal_SavingCreated" xml:space="preserve">
+    <value>Bravo! You've set a new goal of saving!</value>
+  </data>
+  <data name="Goal_SavingDateEnd" xml:space="preserve">
+    <value>How long you want to save?</value>
+  </data>
+  <data name="Goal_SavingDateInit" xml:space="preserve">
+    <value>How long are you saving?</value>
+  </data>
+  <data name="Goal_SavingWhatAmount" xml:space="preserve">
+    <value>¿How much you want to save?</value>
+  </data>
+  <data name="Goal_SuccessDelete" xml:space="preserve">
+    <value>The Goal was deleted.</value>
+  </data>
+  <data name="Goal_WhatAmount" xml:space="preserve">
+    <value>Goal_WhatAmount</value>
+  </data>
+  <data name="Goal_WhatAmountToSave" xml:space="preserve">
+    <value>What amount want to save?</value>
+  </data>
+  <data name="Goal_WhatDescription" xml:space="preserve">
+    <value>Goal_WhatDescription</value>
+  </data>
+  <data name="Goal_WichTimeInterval" xml:space="preserve">
+    <value>Goal_WichTimeInterval</value>
+  </data>
+  <data name="History" xml:space="preserve">
+    <value>History</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="Home_WhatIs" xml:space="preserve">
+    <value>It is an smart system that provides support and user assistance in education planning, management and fiscal sustainability.</value>
+  </data>
+  <data name="Hour" xml:space="preserve">
+    <value>Hour</value>
+  </data>
+  <data name="IdealAmount" xml:space="preserve">
+    <value>Ideal Amount</value>
+  </data>
+  <data name="Interval" xml:space="preserve">
+    <value>Interval</value>
+  </data>
+  <data name="Less" xml:space="preserve">
+    <value>Show less</value>
+  </data>
+  <data name="Library" xml:space="preserve">
+    <value>Library</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Sign In</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Sign out</value>
+  </data>
+  <data name="Mailing_Delete_Msg" xml:space="preserve">
+    <value>Are you sure about delete this message?</value>
+  </data>
+  <data name="Mailing_Delete_Title" xml:space="preserve">
+    <value>Delete Message</value>
+  </data>
+  <data name="Mailing_From" xml:space="preserve">
+    <value>From</value>
+  </data>
+  <data name="Mailing_Inbox" xml:space="preserve">
+    <value>Inbox</value>
+  </data>
+  <data name="Mailing_Message" xml:space="preserve">
+    <value>Message</value>
+  </data>
+  <data name="Mailing_Reply" xml:space="preserve">
+    <value>Reply</value>
+  </data>
+  <data name="Mailing_Send" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="Mailing_Sent_Success" xml:space="preserve">
+    <value>Your message has been sent.</value>
+  </data>
+  <data name="Mailing_Subject" xml:space="preserve">
+    <value>Subject</value>
+  </data>
+  <data name="Mailing_Subject_Placeholder" xml:space="preserve">
+    <value>Enter your subject here</value>
+  </data>
+  <data name="Mailing_To" xml:space="preserve">
+    <value>To</value>
+  </data>
+  <data name="Menu_About" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="Menu_Contact" xml:space="preserve">
+    <value>Contact us</value>
+  </data>
+  <data name="Menu_MonthlyViewer" xml:space="preserve">
+    <value>Monthly Viewer</value>
+  </data>
+  <data name="Menu_TheIdea" xml:space="preserve">
+    <value>Menu_TheIdea</value>
+  </data>
+  <data name="Menu_We" xml:space="preserve">
+    <value>About us</value>
+  </data>
+  <data name="Monthly" xml:space="preserve">
+    <value>Monthly</value>
+  </data>
+  <data name="MonthlyViewer" xml:space="preserve">
+    <value>Monthly Viewer</value>
+  </data>
+  <data name="More" xml:space="preserve">
+    <value>Show more</value>
+  </data>
+  <data name="Multimedia" xml:space="preserve">
+    <value>Multimedia</value>
+  </data>
+  <data name="MyAccount" xml:space="preserve">
+    <value>MyAccount</value>
+  </data>
+  <data name="NextShare" xml:space="preserve">
+    <value>Next share</value>
+  </data>
+  <data name="None" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="Notification" xml:space="preserve">
+    <value>Notification</value>
+  </data>
+  <data name="Notifications" xml:space="preserve">
+    <value>Notifications</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>0k</value>
+  </data>
+  <data name="Operations" xml:space="preserve">
+    <value>Operations</value>
+  </data>
+  <data name="OrderBy" xml:space="preserve">
+    <value>Order By</value>
+  </data>
+  <data name="PanoramicView" xml:space="preserve">
+    <value>Panoramic View</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="PlannerBudget" xml:space="preserve">
+    <value>Planner Budget</value>
+  </data>
+  <data name="PlannerSaving" xml:space="preserve">
+    <value>Planner Saving</value>
+  </data>
+  <data name="Profile" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+  <data name="Push" xml:space="preserve">
+    <value>Push</value>
+  </data>
+  <data name="Quarterly" xml:space="preserve">
+    <value>Quarterly</value>
+  </data>
+  <data name="Recurrent" xml:space="preserve">
+    <value>Recurrent</value>
+  </data>
+  <data name="Recurrent_DeleteOperation" xml:space="preserve">
+    <value>Recurrent_DeleteOperation</value>
+  </data>
+  <data name="Recurrent_DeleteOperationQuestion" xml:space="preserve">
+    <value>Recurrent_DeleteOperationQuestion</value>
+  </data>
+  <data name="Recurrent_Header" xml:space="preserve">
+    <value>Recurrent Operations</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="RememberMe" xml:space="preserve">
+    <value>Remember Me</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="Saving" xml:space="preserve">
+    <value>Saving</value>
+  </data>
+  <data name="Savings" xml:space="preserve">
+    <value>Savings</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="SearchInputOptions" xml:space="preserve">
+    <value>Content type:</value>
+  </data>
+  <data name="SearchInputProveedor" xml:space="preserve">
+    <value>Search to:</value>
+  </data>
+  <data name="SearchInputTerm" xml:space="preserve">
+    <value>Terms of Search</value>
+  </data>
+  <data name="SelectAll" xml:space="preserve">
+    <value>Select All</value>
+  </data>
+  <data name="SelectCategory" xml:space="preserve">
+    <value>Select category</value>
+  </data>
+  <data name="SelectOption" xml:space="preserve">
+    <value>-- Select an option --</value>
+  </data>
+  <data name="SmartAdvisor" xml:space="preserve">
+    <value>Smart Advisor</value>
+  </data>
+  <data name="Sms" xml:space="preserve">
+    <value>SMS</value>
+  </data>
+  <data name="StartDate" xml:space="preserve">
+    <value>Start Date</value>
+  </data>
+  <data name="Tips" xml:space="preserve">
+    <value>Tips</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="TitleDeleteGoal" xml:space="preserve">
+    <value>Delete Goal</value>
+  </data>
+  <data name="Tools" xml:space="preserve">
+    <value>Tools</value>
+  </data>
+  <data name="Total" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="Weekly" xml:space="preserve">
+    <value>Weekly</value>
+  </data>
+  <data name="WelcomeTo" xml:space="preserve">
+    <value>Welcome to</value>
+  </data>
+  <data name="Menu_SeeAllMessages" xml:space="preserve">
+    <value>See All</value>
+  </data>
+  <data name="Visit" xml:space="preserve">
+    <value>Visit</value>
+  </data>
+</root>

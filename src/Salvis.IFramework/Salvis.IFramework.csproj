@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2476DD2B-4F5A-451E-9494-4FFC2AE70F4A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Salvis.Framework</RootNamespace>
+    <AssemblyName>Salvis.IFramework</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'JCorderoski|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\JCorderoski\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Engine\IEngine.cs" />
+    <Compile Include="Services\IConfigurationService.cs" />
+    <Compile Include="Services\IRecurrentService.cs" />
+    <Compile Include="Services\IDebtService.cs" />
+    <Compile Include="Services\ICatalogService.cs" />
+    <Compile Include="Services\IGoalService.cs" />
+    <Compile Include="Services\IMessageService.cs" />
+    <Compile Include="Services\INotificationBoardService.cs" />
+    <Compile Include="Services\INotificationService.cs" />
+    <Compile Include="Services\IOperationService.cs" />
+    <Compile Include="Services\ISavingService.cs" />
+    <Compile Include="Services\IServiceBase.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\IServiceResult.cs" />
+    <Compile Include="Services\ITipService.cs" />
+    <Compile Include="Services\IUserService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Salvis.Entities\Salvis.Entities.csproj">
+      <Project>{d8bae45e-2be7-4e89-8fe8-05bc26d410f4}</Project>
+      <Name>Salvis.Entities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

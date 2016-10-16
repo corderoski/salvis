@@ -1,0 +1,55 @@
+﻿@using Salvis.Resources
+@model Salvis.App.Web.Models.RegisterViewModel
+@{
+    ViewBag.Title = Texts.Register;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Ajax.BeginForm("Register", null, new AjaxOptions { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, OnBegin = "Salvis.UI.operationBegin", OnSuccess = "Salvis.UI.operationComplete" }, new { styles = "margin-bottom: 0px; !important;", Class = "form-horizontal", id = "accountForm" }))
+{
+
+    <div class="content">
+        <h5 class="title">@Texts.Account_TitleRegister</h5>
+        <hr />
+        <div class="form-group">
+            <div class="col-sm-12">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                    @Html.TextBoxFor(m => m.UserName, new Dictionary<string, object> { { "parsley-trigger", "change" }, { "required", "required" }, { "placeholder", Texts.Email }, { "Class", "form-control" }, { "type", "email" } })
+                </div>
+                <div id="nick-error"></div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-12">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                    @Html.PasswordFor(m => m.Password, new Dictionary<string, object> { { "placeholder", Texts.Password }, { "required", "required" }, { "class", "form-control" }, { "id", "password" }, { "data-parsley-minlength", "6" } })
+                </div>
+                <div id="password-error"></div>
+            </div>
+            <div class="col-sm-12">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                    @Html.PasswordFor(m => m.ConfirmPassword, new Dictionary<string, object> { { "placeholder", Texts.ConfirmPassword }, { "required", "required" }, { "class", "form-control" }, { "data-parsley-equalto", "#password" } })
+                </div>
+                <div id="confirmation-error"></div>
+            </div>
+        </div>
+        <p class="spacer">
+            By creating an account, you agree with the <a href="#">Terms</a> and
+            <a href="#">Conditions</a>.
+        </p>
+        <div>
+            <button class="btn btn-block btn-success btn-rad btn-lg" type="submit">@Texts.Register</button>
+        </div>
+
+    </div>
+    @Html.AntiForgeryToken()
+}
+
+@section ScriptsReferences{
+    @Scripts.Render("~/bundles/account")
+    @Scripts.Render("~/bundles/parsley")
+}

@@ -1,0 +1,64 @@
+﻿
+
+#goals-list > .list-group > div > a {
+    padding-top: 0;
+}
+
+#goals-list > .list-group > div > #list-group-item-close {
+    position: relative;
+    z-index: 3;
+    top: 22px;
+    right: 12px;
+    color: red !important;
+    opacity: 0.5 !important;
+    text-shadow: 0 1px 0 #A1A1A1 !important;
+}
+
+    #goals-list > .list-group > div > #list-group-item-close:hover {
+        opacity: 0.9 !important;
+        text-shadow: 0 1px 0 #6E6E6E !important;
+    }
+
+#goals-list > .list-group > div > a > .row {
+    margin-top: 0;
+}
+
+    #goals-list > .list-group > div > a > .row > div > h3 {
+        margin-top: 0;
+    }
+
+/*Notification*/
+.messages > li > .content > ul > li > a > i {
+    font-size: 2em !important;
+}
+
+
+.mails > .item:hover {
+    border-left: 5px solid #4d90fd;
+    border-color: #4d90fd;
+    padding-left: 11px !important;
+    border-top: 1px solid #4d90fd;
+    border-bottom: 1px solid #4d90fd !important;
+    background-color: #FFF !important;
+}
+
+.mails > .read {
+    background-color: #EFEFEF !important;
+}
+
+.mails > .item > .checkbox-conteiner {
+    vertical-align: middle !important;
+}
+
+
+.message-text {
+    white-space: pre-line;
+}
+
+
+/**/
+
+#tip-container {
+    max-height: 600px;
+    min-height: 200px;
+}

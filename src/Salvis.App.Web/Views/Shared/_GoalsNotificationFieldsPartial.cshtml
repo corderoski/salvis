@@ -1,0 +1,43 @@
+﻿@using Salvis.Resources
+@model int
+<tr class="text-center">
+    <td>
+        @Html.DropDownList(string.Format("Notifications[{0}].Interval", Model), (SelectList)ViewBag.Interval, Texts.SelectOption, new { @Class = "form-control " })
+    </td>
+    <td>
+        @{
+            var merdian = !String.IsNullOrWhiteSpace(System.Globalization.CultureInfo.DefaultThreadCurrentCulture.DateTimeFormat.AMDesignator);
+        }
+        <div class="input-group date datetime " @if (merdian)
+                                                {
+                                                @:data-show-meridian="true" 
+                                                @:data-date-format= "HH:ii p"
+                                            }
+                                                else
+                                                { 
+                                                @:data-show-meridian="false" 
+                                                @:data-date-format= "HH:ii"
+                                            }   data-start-view="1"
+             style="margin-bottom: 0;">
+            <div class="input-group date datetime" data-show-meridian="false" data-date-format="HH:ii" data-start-view="1" style="margin-bottom: 0;">
+                @Html.TextBox(string.Format("Notifications[{0}].Hour", Model), "", new Dictionary<string, object> { { "Class", "form-control" } })
+                <span class="input-group-addon btn btn-primary"><span class="glyphicon glyphicon-time"></span></span>
+            </div>
+        </div>
+    </td>
+    <td>
+        @Html.CheckBox(string.Format("Notifications[{0}].Push", Model), false, new Dictionary<string, object>() { { "data-parsley-multiple", "notif" }, { "data-parsley-mincheck", "1" } })
+    </td>
+    <td>
+        @Html.CheckBox(string.Format("Notifications[{0}].Sms", Model), false, new Dictionary<string, object>() { { "data-parsley-multiple", "notif" } })
+
+    </td>
+    <td>
+        @Html.CheckBox(string.Format("Notifications[{0}].Email", Model), false, new Dictionary<string, object>() { { "data-parsley-multiple", "notif" } })
+    </td>
+    <td>
+        <button type="button" class="btn btn-danger btn-xs" onclick="removeRow(this.parentNode.parentNode);">
+            <i class="fa fa-times"></i>
+        </button>
+    </td>
+</tr>

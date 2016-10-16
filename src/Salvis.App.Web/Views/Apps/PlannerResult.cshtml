@@ -1,0 +1,69 @@
+﻿@using Salvis.Resources
+@{
+    ViewBag.Title = "Results";
+    Layout = "~/Views/Shared/_Layout.cshtml";    
+}
+
+@section Title
+{
+   Results
+}
+
+@section Header
+{
+
+}
+
+
+<div class="cl-mcont">
+
+    <div class="well">
+        A continuación podrá visualizar una tabla con los detalles de su planificación:
+    </div>
+    <form method="post" class="form-group" action='@Url.Action("PlannerResult", "Apps")'>
+
+        <table>
+            <thead>
+                <tr>
+                    <td></td>
+                    <td>Ideal</td>
+                    <td>Real</td>
+                </tr>
+            </thead>
+            <tr>
+                <td>Ingresos</td>
+                <td>0</td>
+                <td>@ViewBag.realIncome</td>
+            </tr>
+            <tr>
+                <td>Gastos</td>
+                <td>@ViewBag.expOutcome</td>
+                <td>@ViewBag.realOutcome</td>
+            </tr>
+            <tr>
+                <td>Ahorros</td>
+                <td>@ViewBag.expSaving</td>
+                <td>@ViewBag.realSaving</td>
+            </tr>
+            <tr>
+                <td>Personales</td>
+                <td>@ViewBag.expPersonal</td>
+                <td>@ViewBag.realPersonal</td>
+            </tr>
+        </table>
+        <div class="clearfix" style="margin-top:50px;"></div>
+        <div class="">
+            <input class="btn btn-primary  btn-group-lg" type="submit" value="Descargar" />
+        </div>
+    </form>
+
+</div>
+
+
+@section ScriptsReferences{
+    
+}
+
+@section DocumentReady{
+
+}

@@ -1,0 +1,120 @@
+﻿@using Salvis.Resources
+@{
+    ViewBag.Title = Texts.Message;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+}
+@section Header
+{
+    @Styles.Render("~/bundles/icheck/css")
+    @Styles.Render("~/bundles/niftymodals/css")
+}
+@model IEnumerable<Salvis.App.Web.Models.MessageModel>
+
+@helper GetFiltersBar()
+{
+    <div class="filters ">
+        <div class="btn-group">
+            <input type="checkbox" name="checkall" />
+            <label>@Texts.SelectAll</label>
+        </div>
+
+        <div class="btn-group pull-right">
+
+            @{
+                var nextPage = (int)ViewBag.NextPage;
+                var beforePage = (int)ViewBag.BeforePage;
+                var disabled = (beforePage == 0) ? "disabled" : "";
+               
+                <a href="@Url.Action("Index", new { page = beforePage })" class="btn btn-sm btn-flat btn-default @disabled" >
+                    <i class="fa fa-angle-left"></i>
+                </a>
+               
+                disabled = (nextPage == 0) ? "disabled" : "";
+                          
+                <a  href="@Url.Action("Index", new { page = nextPage })" class="btn btn-sm btn-flat btn-default @disabled">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            }
+        </div>
+        <div class="btn-group" name="mailing-tools" style="margin-left: 40px;">
+            <a data-toggle="tooltip" data-original-title="@Texts.Delete" data-placement="bottom" href="#" data-modal="delete-confirm" class="btn btn-xs btn-flat btn-danger md-trigger">
+                <i class="fa fa-trash-o"></i>@Texts.Delete
+            </a>
+        </div>
+    </div>
+}
+<div class="mail-inbox">
+    <div class="head">
+
+        <h3>@Texts.Mailing_Inbox</h3>
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="@Texts.Search" />
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-primary"><i class="fa fa-search"></i></button>
+            </span>
+        </div>
+    </div>
+    @GetFiltersBar()
+    <div class="mails">
+        @foreach (var message in Model)
+        {
+            string classState = "";
+            if (message.State == (int)Salvis.Entities.MessageState.Read)
+            {
+                classState = "read";
+            }
+            
+            <div data-ref ="@Url.Action("Details", new { Id = message.Id })" class="item  @classState ">
+                <div class="checkbox-conteiner">
+                    <input data-inf="@message.Id" type="checkbox" name="c[]" />
+                </div>
+                <div>
+                    <span class="date pull-right">@message.InputDate.ToString(Salvis.Framework.Helpers.FormatHelper.GetDateFormatByCulture(Culture))</span>
+                    <h4 class="subject">@message.Subject</h4>
+                    <h4 class="from">@Texts.Mailing_From: @message.FromUserName</h4>
+                    <p class="msg">
+                        @{
+            var maxTextLength = Salvis.Framework.Helpers.ConfigurationHelper.GetSetting<int>(Salvis.Framework.Helpers.ConfigurationHelper.SETTING_NAME_TEXT_MAX_LENGTH);
+                            @Salvis.Framework.Helpers.StringHelper.TruncateString(message.Content, maxTextLength);
+                        }
+                    </p>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<!-- Delete Modal -->
+<div class="md-modal colored-header warning md-effect-10" id="delete-confirm">
+    @Html.AntiForgeryToken()
+    <div class="md-content">
+        <div class="modal-header">
+            <h3>@Texts.Mailing_Delete_Title</h3>
+            <button type="button" class="close md-close" data-dismiss="modal" aria-hidden="true">
+                &times;</button>
+        </div>
+        <div class="modal-body">
+            <div class="text-center">
+                <div class="i-circle warning"><i class="fa fa-trash-o"></i></div>
+                <h4>@Texts.Delete</h4>
+                <p>@Texts.Mailing_Delete_Msg</p>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button id="btnCloseConfirm" type="button" class="btn btn-default btn-flat md-close" data-dismiss="modal">
+                @Texts.Cancel</button>
+            <button id="btnDelete" type="button" class="btn btn-danger btn-flat">@Texts.Delete</button>
+        </div>
+    </div>
+</div>
+<div class="md-overlay"></div>
+@section ScriptsReferences
+{
+    @Scripts.Render("~/bundles/icheck")
+    @Scripts.Render("~/bundles/message/index")
+    @Scripts.Render("~/bundles/niftymodals")
+}
+@section DocumentReady
+{
+initializeInbox();
+}

@@ -1,0 +1,61 @@
+﻿@using Salvis.Resources
+
+<div class="cl-sidebar" data-position="right" data-step="1">
+    <div class="cl-toggle"><i class="fa fa-bars"></i></div>
+    <div class="cl-navblock">
+        <div class="menu-space">
+            <div class="nano-content">
+                <ul class="cl-vnavigation">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li>
+                            <a href="#"><i class="fa fa-home"></i><span>@Texts.MyAccount</span></a>
+                            <ul class="sub-menu">
+                                <li><a href="@Url.Action("Dashboard", "User")">@Texts.Dashboard</a></li>
+                                <li><a href="@Url.Action("Index", "Saving")"><span>@Texts.Savings</span></a></li>
+                                <li><a href="@Url.Action("Index", "Debt")"><span>@Texts.Debts</span></a></li>
+                                <li><a href="@Url.Action("Index", "Recurrent")"><span>@Texts.Recurrent</span></a></li>
+                                <li>
+                                    <a href="@Url.Action("Index", "Message")"><span>@Texts.Notifications</span> 
+                                    <span id="messageUnreadCount-menu" style="display: none;" class="label label-danger pull-right">0</span></a>
+                                </li>
+                                <li><a href='@Url.Action("Configurations", "User")'><span>@Texts.Configurations</span></a>
+                            </ul>
+                        </li>
+                    }
+                    <li>
+                        <a href="#"><i class="fa fa-smile-o"></i><span>@Texts.Library</span></a>
+                        <ul class="sub-menu">
+                            <li><a href='@Url.Action("Tips", "Library")'>@Texts.Tips</a></li>
+                            <li><a href="#">@Texts.Multimedia</a></li>
+                            <li><a href="@Url.Action("Index", "Library")"><span>Base de Datos</span></a></li>
+
+                            <li><a href="#">@Texts.Audits</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-list-alt"></i><span>@Texts.Tools</span></a>
+                        <ul class="sub-menu">
+                            <li><a href='@Url.Action("MonthlyViewer", "Apps")'>@Texts.Menu_MonthlyViewer</a></li>
+                            <li><a href='@Url.Action("PlannerBudget", "Apps")'>@Texts.PlannerBudget</a></li>
+                            <li><a href="#">Gestión de Ahorros</a></li>
+                            <li><a href='@Url.Action("SmartAssistant", "Apps")'>@Texts.SmartAdvisor</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-bar-chart-o"></i><span>@Texts.PanoramicView</span></a>
+                        <ul class="sub-menu">
+                            <li><a href="#">Tops</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="text-right collapse-button" style="padding: 7px 9px;">
+            <button id="sidebar-collapse" class="btn btn-default" style="">
+                <i style="color: #fff;"
+                    class="fa fa-angle-left"></i>
+            </button>
+        </div>
+    </div>
+</div>

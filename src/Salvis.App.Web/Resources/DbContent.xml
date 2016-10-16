@@ -1,0 +1,123 @@
+<!--<?xml version="1.0" encoding="utf-8" standalone="yes"?>-->
+<Contents>
+  <Item id="Home_Index" culture="es">
+    <Content>
+      <![CDATA[<h3>¿Qué es?</h3>
+    <p>
+       Es un sistema inteligente que sirve de apoyo y asistencia al usuario en la educación, planificación, gestión y continuidad financiera.
+    </p>
+    <div class="spacer2"></div>
+    <p>Con <strong class="special-text">Salvis</strong> podrás:</p>
+    <ul>
+        <li>Buscar y Consultar material educativo de Educación Financiera.</li>
+        <li>Crear metas con fines.</li>
+        <li>Dar seguimiento y/o Continuidad de Ahorros basados en metas.</li>
+        <li>Alertas e indicadores de cumplimiento de metas.</li>
+        <li>Asesoría personalizada de planificación de gastos.</li>
+        <li>Recomendaciones inteligentes basadas en metas y trayectorias del usuario.</li>
+        <li>Recomendaciones de productos y servicios bancarios en comportamiento y metas.</li>
+    </ul>
+    <div class="spacer2"></div>
+    <div class="row">
+        <div class="col-sm-3">
+            <img class="img-thumbnail" src="/Content/Images/img-1.png" width="320" alt="Screen Shot" />
+        </div>
+        <div class="col-sm-3">
+            <img class="img-thumbnail" src="/Content/Images/img-2.png" width="320" alt="Screen Shot" />
+        </div>
+    </div>]]>
+    </Content>
+  </Item>
+  <Item id="Home_Index" culture="en">
+    <Content>
+      <![CDATA[<h3>¿What is Salvis?</h3>
+    <p>
+       It's a smart assistant that supports users about education, planification, management & financial continuity.
+    </p>
+    <div class="spacer2"></div>
+    <div class="row">
+        <div class="col-sm-3">
+            <img class="img-thumbnail" src="/Content/Images/img-1.png" width="320" alt="Screen Shot" />
+        </div>
+        <div class="col-sm-3">
+            <img class="img-thumbnail" src="/Content/Images/img-2.png" width="320" alt="Screen Shot" />
+        </div>
+    </div>]]>
+    </Content>
+  </Item>
+  <Item id="2" culture="es">
+    <Content>
+      <![CDATA[<div>
+    <p>Aquí, se ha tirado mucho código...</p>
+</div>]]>
+    </Content>
+  </Item>
+  <Item id="3" culture="es">
+    <Content>
+      <![CDATA[<section class="">
+    <header>
+        <h3>Address</h3>
+    </header>
+    <p>
+        One Microsoft Way<br />
+        Redmond, WA 98052-6399
+    </p>
+</section>]]>
+    </Content>
+  </Item>
+  <Item id="4" culture="es">
+    <Content>
+      <![CDATA[<div class="container">
+    <div>
+        <h2 class="special-text">:(</h2>
+        <h2>Lo sentimos, en estos momentos estamos bajo tareas de <span class="">mantenimiento</span>.</h2>
+        <hr />
+    </div>
+</div>]]>
+    </Content>
+  </Item>
+  <Item id="5" culture="es">
+    <Content>
+    </Content>
+  </Item>
+  <Item id="Debt.1" culture="es">
+    <Content>
+      Las Deudas son...
+    </Content>
+  </Item>
+  <Item id="Debt.1" culture="en">
+    <Content>
+      ...explanation...
+    </Content>
+  </Item> 
+  <Item id="Recurrent.1" culture="es">
+    <Content>
+      <![CDATA[<div class="text-center">
+      Las <strong>Operaciones Recurrentes</strong> engloban todas aquellas transferencias, pagos y operaciones financieras periódicas.
+</div>]]>
+    </Content>
+  </Item>
+  <Item id="Recurrent.1" culture="en">
+    <Content>
+      <![CDATA[<div class="text-center">
+      The <strong>Recurrent Operations</strong> are  transfers, payments and all the periodically financial operations.
+</div>]]>
+    </Content>
+  </Item>
+  <Item id="Apps.Budget_1" culture="es">
+    <Content>
+      <![CDATA[
+        El <strong>Planificar de Presupuesto</strong> es una herramienta que le educa mientras
+    le ayuda con la creación y gestión de un presupuesto básico personal.
+      ]]>
+    </Content>
+  </Item>
+  <Item id="Apps.Budget_1" culture="en">
+    <Content>
+      <![CDATA[
+       Apps.Budget_1
+      ]]>
+    </Content>
+  </Item>
+  
+</Contents>

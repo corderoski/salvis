@@ -1,0 +1,110 @@
+﻿@using Salvis.Resources
+@model IEnumerable<Salvis.App.Web.Models.GoalModel>
+@{
+    ViewBag.Title = Texts.Debts;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Header
+ {
+    @Styles.Render("~/bundles/datatable/css")
+    @Styles.Render("~/bundles/niftymodals/css")
+    @Styles.Render("~/bundles/datespicker/css")
+    @Styles.Render("~/bundles/extra/css")
+}
+@section Title
+{
+    @ViewBag.Title
+    <a href="#" class="md-trigger" data-modal="md-addModal"><i class="fa fa-plus-circle"></i></a>
+    <hr />
+}
+
+<div class="row">
+    <div class="col-sm-6 col-md-6">
+        <div class="block-flat">
+            <div class="header">
+                <h3>@Texts.Goals</h3>
+            </div>
+            <div id="goals-list-content" class="content">
+                @Html.Action("ListGoals")
+            </div>
+            @Html.Hidden("goal-item-info")
+        </div>
+    </div>
+    <div class="col-sm-6 col-md-6">
+        <div class="block-flat">
+            <div class="header">
+                <h3>Detalle</h3>
+            </div>
+            <div class="content">
+                <div class="content blue-chart">
+                    <div id="chartGoals" style="height: 180px;"></div>
+                </div>
+                <div class="block-transparent">
+                    <div class="header">
+                        <h3>@Texts.NextShare</h3>
+                    </div>
+                    <div class="content">
+
+                        <div class="stat-data" style="width: auto;">
+                            <div class="stat-blue">
+                                <h3 id="nextOperationDate">dd/mm/yyyy</h3>
+                                <span>@Texts.Date</span>
+                            </div>
+                        </div>
+                        <div class="stat-data" style="width: auto;">
+                            <div class="stat-number">
+                                <h3 id="expValue">##.##</h3>
+                                <div>@Texts.ExpectedAmount</div>
+                            </div>
+                        </div>
+                        <div class="stat-data" style="width: auto;">
+                            <div class="stat-number">
+                                <h3 id="idealValue">##.##</h3>
+                                <div>@Texts.IdealAmount</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="block-transparent">
+                    <div class="header">
+                        <h3>@Texts.Fee</h3>
+                    </div>
+                    <div class="content">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="fee-table">
+                                <thead>
+                                    <tr>
+                                        <th>@Texts.Date</th>
+                                        <th>@Texts.ExpectedAmount</th>
+                                        <th>@Texts.IdealAmount</th>
+                                    </tr>
+                                </thead>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@Html.Action("LoadDeleteConfirmation")
+
+<div class="md-modal md-effect-8 scrollbar" id="md-addModal">
+    @Html.Action("LoadPartialAdd")
+</div>
+<div class="md-overlay"></div>
+
+@section ScriptsReferences
+{
+    @Scripts.Render("~/bundles/goals/debt")
+    @Scripts.Render("~/bundles/datatable")
+    @Scripts.Render("~/bundles/charts")
+    @Scripts.Render("~/bundles/sparkline")
+    @Scripts.Render("~/bundles/niftymodals")
+    @Scripts.Render("~/bundles/parsley")
+    @Scripts.Render("~/bundles/datespicker")
+}

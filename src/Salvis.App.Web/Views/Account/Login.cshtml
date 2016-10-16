@@ -1,0 +1,66 @@
+﻿@using Salvis.App.Web.Models
+@using Salvis.Resources
+@model LoginViewModel
+@{
+    ViewBag.Title = Texts.Login;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Header
+{
+    @Styles.Render("~/bundles/icheck/css")
+}
+<section>
+
+    @using (Ajax.BeginForm("Login", new { returnUrl = ViewBag.ReturnUrl }, new AjaxOptions { HttpMethod = "POST", InsertionMode = InsertionMode.ReplaceWith, OnBegin = "Salvis.UI.operationBegin", OnSuccess = "Salvis.UI.operationComplete" }, new { styles = "margin-bottom: 0px; !important;", Class = "form-horizontal", id = "accountForm" }))
+    {
+        <div class="content">
+            <h5 class="title">@Texts.Login</h5>
+            <hr />
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                        @Html.TextBoxFor(m => m.UserName, new { placeholder = Texts.Email, id = "username", Class = "form-control", required = "required" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                        @Html.PasswordFor(m => m.Password, new { placeholder = Texts.Password, id = "password", Class = "form-control", required = "required" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <div class="checkbox">
+                        <div class="col-sm-1">@Html.CheckBoxFor(m => m.RememberMe, new { @class = "icheck", text = "test" })</div>
+                        <div class="col-sm-6"><label for="RememberMe">@Texts.RememberMe</label></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center">
+            <div class="btn-group-lg">
+                <button class="btn btn-primary btn-lg" data-dismiss="modal" type="submit">@Texts.Login</button>
+            </div>
+            <div class="spacer2"></div>
+            <div>
+                @Html.ActionLink(Texts.Account_ResetPassword, "ForgotPassword", "Account", null, htmlAttributes: new { @class = "" })
+            </div>
+            <div class="spacer"></div>
+        </div>
+        @Html.AntiForgeryToken()
+    }
+</section>
+
+@*<section class="social" id="socialLoginForm">
+        @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+    </section>*@
+
+@section ScriptsReferences{
+    @Scripts.Render("~/bundles/parsley")
+    @Scripts.Render("~/bundles/icheck")
+    @Scripts.Render("~/bundles/account")
+}

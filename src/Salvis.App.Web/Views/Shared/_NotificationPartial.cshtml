@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Salvis.Entities.Message>
+<ul>
+    @Html.Hidden("messageUnreadCount", Model.Count())
+
+    @foreach (var message in Model)
+    {
+        var icon = "";
+        switch (message.TypeId)
+        {
+            case 0:
+                icon = "fa-envelope";
+                break;
+            case 1:
+                icon = "fa-bullhorn";
+                break;
+            case 2:
+                icon = " fa-flag";
+                break;
+
+            default:
+                icon = "fa-bullhorn";
+                break;
+
+        }
+        <li>
+            <a href="@Url.Action("Details", "Message", new { id = message.Id })">
+                <i class="fa fa-4x @icon default"></i>
+                <span class="date pull-right">@message.InputDate.ToString(Salvis.Framework.Helpers.FormatHelper.GetDateFormatByCulture(Culture))</span>
+                <span class="name">@message.Subject</span>
+                @{
+                    var maxTextLength = Salvis.Framework.Helpers.ConfigurationHelper.GetSetting<int>(Salvis.Framework.Helpers.ConfigurationHelper.SETTING_NAME_TEXT_MAX_LENGTH);
+
+                    @Salvis.Framework.Helpers.StringHelper.TruncateString(message.Content, maxTextLength);
+
+                }
+            </a>
+        </li>
+     }
+</ul>

@@ -1,0 +1,28 @@
+﻿@using Salvis.Resources
+@model int
+
+
+<div class="text-center">
+
+    <div class="col-sm-2 col-md-2">
+        <div class="input-group date datetime " data-start-view="3" data-min-view="2" data-date-format="MM/yyyy">
+            @Html.TextBox(string.Format("MonthlyReportModel[{0}].ReportDate", Model), "", new Dictionary<string, object> { { "Class", "form-control" }, { "placeHolder", "07/2015" } })
+            <span class="input-group-addon btn btn-primary"><span class="glyphicon glyphicon-calendar"></span></span>
+        </div>
+    </div>
+    <div class="col-sm-3 col-md-3">
+        @Html.TextBox(string.Format("MonthlyReportModel[{0}].Description", Model), "", new Dictionary<string, object>() { { "data-parsley-multiple", "notif" }, { "placeHolder", @Texts.Description } })
+    </div>
+    <div class="col-sm-3 col-md-3">
+        @Html.TextBox(string.Format("MonthlyReportModel[{0}].Category", Model), "", new Dictionary<string, object>() { { "data-parsley-multiple", "notif" }, { "placeHolder", @Texts.Category } })
+    </div>
+    <div class="col-sm-2 col-md-2">
+        @Html.TextBox(string.Format("MonthlyReportModel[{0}].Amount", Model), "", new Dictionary<string, object>() { { "data-parsley-multiple", "notif" }, { "placeHolder", "2190.95" } })
+    </div>
+    <div class="col-sm-1 col-md-1">
+        <button type="button" class="btn btn-danger btn-xs" onclick="removeRow(this.parentNode.parentNode);">
+            <i class="fa fa-times"></i>
+        </button>
+    </div>
+
+</div>

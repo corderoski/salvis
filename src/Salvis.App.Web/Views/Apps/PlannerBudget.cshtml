@@ -1,0 +1,330 @@
+﻿@using Salvis.Resources
+@using Salvis.Framework.Helpers
+@using Salvis.App.Web.Helpers
+@{
+    ViewBag.Title = Texts.Apps_BudgetPlanner;
+    Layout = "~/Views/Shared/_Layout.cshtml";    
+}
+
+@section Title
+{
+   @Texts.Apps_BudgetPlanner
+}
+
+@section Header
+{
+    @Styles.Render("~/bundles/fuelux/css")
+    <link rel="stylesheet" type="text/css" href="~/Content/themes/cleanzone/elements/skycons/" />
+}
+
+<div class="well">
+    @Html.GetContent("Apps.Budget_1")
+</div>
+
+<div class="cl-mcont">
+    <div class="row wizard-row">
+        <div class="col-md-12 fuelux">
+            <div class="block-wizard">
+                <div id="wizard1" class="wizard wizard-ux">
+                    <ul class="steps">
+                        <li data-target="#step1" class="active">Antes de iniciar<span class="chevron"></span>
+                        </li>
+                        <li data-target="#step2">Ingreso y egresos<span class="chevron"></span></li>
+                        <li data-target="#step3">Ahorros<span class="chevron"></span></li>
+                        <li data-target="#step4">Préstamos y Deudas<span class="chevron"></span></li>
+                    </ul>
+                    <div class="actions">
+                        <button type="button" class="btn btn-xs btn-prev btn-default"><i class="icon-arrow-left">
+                        </i>Anterior</button>
+                        <button type="button" class="btn btn-xs btn-next btn-default" data-last="Finish">Siguiente<i
+                            class="icon-arrow-right"></i></button>
+                    </div>
+                </div>
+                <div class="step-content">
+                    @using (Ajax.BeginForm("PlannerBudget", "Apps", 
+                        new AjaxOptions { InsertionMode = InsertionMode.Replace, HttpMethod = "POST", OnBegin = "operationBegin", OnSuccess = "operationComplete" }, 
+                        new { @class = "form-horizontal group-border-dashed"}))
+                        {
+                        
+                        @*//"data-parsley-namespace" = "data-parsley-", @"data-parsley-validate"= "novalidate" *@
+
+            <div class="step-pane active" id="step1">
+                <div class="form-group no-padding">
+                    <div class="col-sm-7">
+                        <h3 class="hthin">Antes de iniciar</h3>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <p style="font-size: large;"><b>Planificar</b> es elaborar un plan general, detallado
+                        y generalmente de gran amplitud para la obtencion de un fin.</p>
+                    <p style="font-size: large;">- Una planificacion te permite potenciar la posibilidad
+                        de que alcances tus objetivos.</p>
+                    <p style="font-size: large;">- Mediante una planificacion, plasmas procesos (un camino)
+                        para dar con una solución (objetivo).</p>
+                    <br />
+                    <p style="font-size: large;">Un <b>presupuesto</b> es un calculo (estimado) de los ingresos
+                        y gastos que se producirán en una unidad económica (familia, empresa, Estado) en
+                        un periodo de tiempo determinado. </p>
+                    <br />
+                    <p style="font-size: large;">Con un presupuesto puedes:</p>
+                    <br />
+                    <p style="font-size: large;">- Obtener una estimación de los gastos e ingresos.</p>
+                    <p style="font-size: large;">- Crear ordenación y balance previos de los gastos e ingresos.
+                    </p>
+                    <p style="font-size: large;">- Reconocer y reducir los "gastos fugas".</p>
+                    <p style="font-size: large;">- Detectar posibles reducciones de gastos / consumos.
+                    </p>
+                    <p style="font-size: large;">- Conocer tu situación y prepararte para el ahorro.
+                    </p>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <button data-wizard="#wizard1" class="btn btn-default wizard-previous"><i class="fa fa-caret-left">
+                                                                                               </i>Anterior</button>
+                        <button data-wizard="#wizard1" class="btn btn-primary wizard-next">Siguente<i class="fa fa-caret-right"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="step-pane" id="step2">
+                <div class="form-group no-padding">
+                    <div class="col-sm-7">
+                        <h3 class="hthin">Ingresos y egresos</h3>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-7">
+                        <p style="font-size: large;">Un <strong>ingreso</strong> es una cantidad de dinero que
+                            gana una persona, grupo o empresa de manera periodica y regular.  Mientras que un
+                            <strong>egreso o gasto</strong> es la partida y/o salida del mismo.</p>
+                    </div>
+                </div>
+                <div class="col-sm-9">
+                    <h3 class="">Ingresos</h3>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-6">
+                        <div class="col-sm-4">
+                            Ingresos 1
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="text" name="s1_txtIn1" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="col-sm-6">
+                        <div class="col-sm-4">
+                            Ingresos 2
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="text" name="s1_txtIn2" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-9">
+                    <h3 class="">Egresos</h3>
+                </div>
+                <div class="form-group">
+
+                    <div class="col-sm-10">
+                        <div class="col-sm-6">
+                            <label class="label label-info">Vivienda</label>
+                            <p>Incluye: Hipoteca, alquiler, electricidad, gas, agua potable, saneamiento.</p>
+                        </div>
+                        <div class="col-sm-4">
+                            <input type="text" name="s2_txtOut1" class="form-control">
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="col-sm-10">
+                        <div class="col-sm-6">
+                            <label class="label label-info">Transporte</label>
+                            <p>Incluye: Gastos de autobus, seguros, licencias, combustible, mantenimiento</p>
+                        </div>
+                        <div class="col-sm-4">
+                            <input type="text" name="s2_txtOut2" class="form-control">
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="col-sm-10">
+                        <div class="col-sm-6">
+                            <label class="label label-info">Servicios</label>
+                            <p>Incluye: Teléfonos, internet, TV por Cable</p>
+                        </div>
+                        <div class="col-sm-4">
+                            <input type="text" name="s2_txtOut3" class="form-control">
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="col-sm-10">
+                        <div class="col-sm-6">
+                            <label class="label label-info">Personales</label>
+                            <p>Incluye: salón, peluquería, médico, gimnasio.</p>
+                        </div>
+                        <div class="col-sm-4">
+                            <input type="text" name="s2_txtOut4" class="form-control">
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <button data-wizard="#wizard1" class="btn btn-default wizard-previous"><i class="fa fa-caret-left">
+                                                                                               </i>Anterior</button>
+                        <button data-wizard="#wizard1" class="btn btn-primary wizard-next">Siguente <i class="fa fa-caret-right">
+                                                                                                    </i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="step-pane" id="step3">
+                <div class="form-group no-padding">
+                    <div class="col-sm-7">
+                        <h3 class="hthin">Ahorros</h3>
+                    </div>
+                </div>
+                <div class="form-group no-padding">
+                    <p>¿Está ahorrando actualmente?</p>
+                    <p><strong>¡Un ahorro continuo y disciplinado sólo le puede traer beneficios!</strong>
+                    </p>
+                    <p>Ahorrar le permite:</p>
+                    <ul>
+                        <li>Mayor seguridad financiera.</li>
+                        <li>Para amortiguar los impactos que puedan causarles las fluctuaciones de la economía.
+                        </li>
+                        <li>Ahorrar parte de nuestro ingreso en los tiempos de las “vacas gordas” les permitirá
+                            a los individuos sobrevivir cuando lleguen  los tiempos de las “vacas flacas”.
+                        </li>
+                        <li>Lograr objetivos a largo plazo.</li>
+                        <li>Estar preparados en casos de emergencias o para hacer frente a situaciones inesperadas.
+                        </li>
+                    </ul>
+                    <p>Nadie sabe lo que le deparará el futuro, es por eso que debemos estar preparados
+                        para enfrentar dificultades que se nos podrían presentar más adelante en el camino.
+                    </p>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-2">
+                        <label style="font-size: large;" class="control-label">Ahorro 1</label>
+                        <p style="font-size: large;">Monto</p>
+                        <p style="font-size: large;">Cuota del Ahorro</p>
+                    </div>
+                    <div class="col-sm-3">
+                        <br />
+                        <input type="text" class="form-control">
+                        <input type="text" name="s3_sav1" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-2">
+                        <label style="font-size: large;" class="control-label">Ahorro 2</label>
+                        <p style="font-size: large;">Monto</p>
+                        <p style="font-size: large;">Cuota del Ahorro</p>
+                    </div>
+                    <div class="col-sm-3">
+                        <br />
+                        <input type="text" class="form-control">
+                        <input type="text" name="s3_sa2" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <button data-wizard="#wizard1" class="btn btn-default wizard-previous"><i class="fa fa-caret-left">
+                                                                                               </i>Anterior</button>
+                        <button data-wizard="#wizard1" class="btn btn-primary wizard-next"><i class="fa fa-check">
+                                                                                           </i>Siguiente</button>
+                    </div>
+                </div>
+            </div>
+            <div class="step-pane" id="step4">
+
+                <div class="form-group no-padding">
+                    <div class="col-sm-7">
+                        <h3 class="hthin">Préstamos y Deudas</h3>
+                    </div>
+                </div>
+                <p>
+                    Una <strong>deuda</strong> es el compromiso de saldar en su totalidad un préstamo
+                    realizado ya sea en especie o en dinero.
+                </p>
+                <p>
+                    Cualquier plan para salir de deudas implica que uno pueda pagar, por lo menos, el
+                    pago mínimo mensual de todos sus créditos, y un poco más. Si uno verdaderamente
+                    no puede, entonces tiene que tomar otras medidas adicionales.
+                </p>
+                <p>
+                    Se debe hacer una lista de las deudas en las tarjetas de crédito, préstamos organizando
+                    y utilizando datos tales como: Saldo Total / Pendiente, Tasa de Interés, Pago Mínimo
+                    y Fecha de Pago.
+                </p>
+                <p>Para más información, puedes buscar acerca del plan <a href="http://blogs.elheraldo.hn/historiasdeexito/2011/04/18/la-bola-de-nieve-el-metodo-para-salir-de-deudas-parte-i/">
+                                                                           Bola de Nieve</a> por Dave Ramsey.</p>
+
+                <div class="form-group">
+                    <div class="col-sm-2">
+                        <label style="font-size: large;" class="control-label">Prestamo 1</label>
+                        <p style="font-size: large;">Monto</p>
+                        <p style="font-size: large;">Monto de Cuota</p>
+                    </div>
+                    <div class="col-sm-3">
+                        <br />
+                        <input type="text" class="form-control">
+                        <input type="text" name="s4_debt1" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-2">
+                        <label style="font-size: large;" class="control-label">Prestamo 2</label>
+                        <p style="font-size: large;">Monto</p>
+                        <p style="font-size: large;">Monto de Cuota</p>
+                    </div>
+                    <div class="col-sm-3">
+                        <br />
+                        <input type="text" class="form-control">
+                        <input type="text" name="s4_debt2" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-2">
+                        <label style="font-size: large;" class="control-label">Prestamo 3</label>
+                        <p style="font-size: large;">Monto</p>
+                        <p style="font-size: large;">Monto de Cuota</p>
+                    </div>
+                    <div class="col-sm-3">
+                        <br />
+                        <input type="text" class="form-control">
+                        <input type="text" name="s4_debt3" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <button data-wizard="#wizard1" class="btn btn-default wizard-previous"><i class="fa fa-caret-left">
+                                                                                               </i>Anterior</button>
+                        <button type="submit" data-wizard="#wizard1" class="btn btn-success"><i class="fa fa-check">
+                                                                                             </i>Analizar</button>
+                    </div>
+                </div>
+            </div>
+                        
+            @Html.AntiForgeryToken()
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+@section ScriptsReferences{
+    @Scripts.Render("~/bundles/apps/planners")
+}
+
+@section DocumentReady{
+    App.wizard();
+    $("#credit_slider").slider().on("slide", function (e) {
+    $("#credits").html("$" + e.value);
+    });
+    $("#rate_slider").slider().on("slide", function (e) {
+    $("#rate").html(e.value + "%");
+    });
+}

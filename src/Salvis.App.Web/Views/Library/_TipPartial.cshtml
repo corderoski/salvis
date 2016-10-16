@@ -1,0 +1,9 @@
+﻿@model IEnumerable<Salvis.Entities.Tip>
+
+@foreach (var tip in Model)
+{
+    <div class="alert alert-success alert-white rounded">
+        <div class="icon">!</div>
+        @tip.DescriptionES
+    </div>
+}

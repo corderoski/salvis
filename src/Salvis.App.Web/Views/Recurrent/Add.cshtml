@@ -1,0 +1,155 @@
+﻿@using Salvis.Resources
+@using Salvis.App.Web.Helpers
+@model Salvis.App.Web.Models.GoalModel
+
+@{
+    ViewBag.Title = string.Format("{0} {1}", Texts.Add, Texts.Recurrent_Header);
+}
+@section Header
+{
+    @Styles.Render("~/bundles/datespicker/css")
+    @Styles.Render("~/bundles/datesrange/css")
+}
+@section Title
+{
+    @ViewBag.Title
+}
+
+<div class="col-md-11 col-lg-11">
+    @using (Ajax.BeginForm("AddGoal", "Debt", new AjaxOptions { InsertionMode = InsertionMode.Replace, HttpMethod = "POST", OnBegin = "operationBegin", OnSuccess = "operationComplete" }, new { Id = "formAddGoals", @class = "form-horizontal" }))
+    {
+        <div class="text-primary">
+            <p>@Html.GetContent("Recurrent.1", Culture)</p>
+            <p>
+                @Texts.FieldsRequired
+            </p>
+        </div>
+
+        <div class="col-sm-6 col-md-6">
+            <div class="row">
+                <div class="col-sm-8">@Html.Label(Texts.Title + '*')</div>
+                <div class="clearfix"></div>
+                <div class="col-sm-8 col-md-8">
+                    @Html.TextBoxFor(p => p.Name, new Dictionary<string, object> { { "Class", "form-control" }, { "required", "required" }, { "placeHolder", "Netflix" } })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-8">@Html.Label(Texts.Goal_RecurrentDateInit)</div>
+                <div class="clearfix"></div>
+                <div class="col-sm-6 col-md-6">
+                    <div class="input-group date datetime " data-min-view="2" data-date-format="@Html.GetCurrentCultureDateFormat()">
+                        @Html.TextBoxFor(p => p.StartDate, new Dictionary<string, object> { { "Class", "form-control" }, { "required", "required" }, { "placeHolder", "01/01/2015" } })
+                        <span class="input-group-addon btn btn-primary"><span class="glyphicon glyphicon-calendar"></span></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-8">@Html.Label(Texts.Goal_RecurrentDateEnd + '*')</div>
+                <div class="clearfix"></div>
+                <div class="col-sm-6 col-md-6">
+                    <div class="input-group date datetime" data-min-view="2" data-date-format="@Html.GetCurrentCultureDateFormat()">
+                        @Html.TextBoxFor(p => p.EndDate, new Dictionary<string, object>() { { "class", "form-control" }, { "placeHolder", "14/02/2016" } })
+                        <span class="input-group-addon btn btn-primary"><span class="glyphicon glyphicon-calendar"></span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-6">
+            <div class="row">
+                <div class="col-sm-10 col-md-10">@Html.Label(Texts.Goal_RecurrentWichTimeIterval)</div>
+                <div class="clearfix"></div>
+                <div class="col-sm-10 col-md-10">
+                    @Html.DropDownListFor(p => p.TimeType, (SelectList)ViewBag.Interval, null, new Dictionary<string, object>() { { "Class", "select" } })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-10 col-md-10">
+                    @Html.Label(Texts.Goal_RecurrentWhatAmount + '*')
+                </div>
+                <div class="clearfix"></div>
+                <div class="col-sm-8 col-md-8">
+                    <div class="input-group">
+                        <span class="input-group-addon">$</span>
+                        @Html.TextBoxFor(p => p.Amount, new Dictionary<string, object> { { "Class", "form-control" }, { "type", "number" }, { "required", "required" }, { "placeHolder", "999.95" } })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-10 col-md-10">
+                    @Html.Label(Texts.Goal_RecurrentWichCategory + '*')
+                </div>
+                <div class="clearfix"></div>
+                <div class="col-sm-10 col-md-10">
+                    @Html.DropDownListFor(p => p.ReasonId, new SelectList(new object[0]), @Texts.SelectOption, new Dictionary<string, object>() { { "Class", "select" } })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-10 col-md-10">@Html.Label(Texts.Goal_WhatDescription)</div>
+                <div class="clearfix"></div>
+                <div class="col-sm-12 col-md-12">
+                    @Html.TextAreaFor(p => p.Description, new Dictionary<string, object> { { "Class", "form-control" }, { "placeHolder", @Texts.Description } })
+                </div>
+            </div>
+        </div>
+
+        <div class="clearfix" style="margin: 2% !important"></div>
+        <div class="col-sm-10 col-md-10">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#notificationCollapse">
+                            <i class="fa fa-angle-right"></i>@Texts.Notification
+                        </a>
+                    </h4>
+                </div>
+                <div id="notificationCollapse" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <div class="col-sm-12 col-md-12">
+                            <div class="table-responsive col-sm-12">
+                                <table id="notificationTable" class="no-border" hidden="hidden">
+                                    <thead class="no-border">
+                                        <tr>
+                                            <th class="col-sm-4"><b>@Texts.Interval</b></th>
+                                            <th class="col-sm-3"><b>@Texts.Hour</b></th>
+                                            <th class="col-sm-1"><b>@Texts.Push</b></th>
+                                            <th class="col-sm-1"><b>@Texts.Sms</b></th>
+                                            <th class="col-sm-1"><b>@Texts.Email</b></th>
+                                            <th class="col-sm-1"><b>@Texts.Delete</b></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="no-border-y"></tbody>
+                                </table>
+                            </div>
+                            <div class="col-sm-12">
+                                <button type="button" id="addNotificationRow" class="btn btn-primary btn-small">
+                                    <i class="fa fa-plus-circle"></i>@Texts.Add
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="row btn-group">
+            <button type="button" class="btn btn-default">@Texts.Cancel</button>
+            <button type="submit" class="btn btn-primary btn-flat">@Texts.Save</button>
+        </div>
+        @Html.AntiForgeryToken()
+    }
+</div>
+
+@section ScriptsReferences
+{
+    @Scripts.Render("~/bundles/goals/recurrent")
+    @Scripts.Render("~/bundles/datatable")
+    @Scripts.Render("~/bundles/flot")
+    @Scripts.Render("~/bundles/sparkline")
+    @Scripts.Render("~/bundles/niftymodals")
+    @Scripts.Render("~/bundles/parsley")
+    @Scripts.Render("~/bundles/datesrange")
+    @Scripts.Render("~/bundles/datespicker")
+    <script type="text/javascript">
+        var mode = 1;
+    </script>
+}

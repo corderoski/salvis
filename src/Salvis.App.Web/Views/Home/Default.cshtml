@@ -1,0 +1,19 @@
+﻿@using Salvis.Resources
+@using Salvis.App.Web.Helpers
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = Resources.Strings.AppName;
+}
+
+@section Title
+{
+    <span class="special-text">@Resources.Strings.AppName</span>
+}
+
+@Html.GetContent("4", Culture)
+
+
+@section DocumentReady
+{
+$('ul[class="nav navbar-nav navbar-right user-nav"]').remove();
+}

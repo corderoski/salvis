@@ -1,0 +1,11 @@
+﻿@using Salvis.Resources
+@using Salvis.App.Web.Helpers
+@{
+    ViewBag.Title = Texts.Menu_Contact;
+}
+
+@section Title
+{
+    <span class="special-text">@Resources.Strings.AppName</span>
+}
+@Html.GetContent("3", Culture)

@@ -1,0 +1,53 @@
+﻿@using Salvis.Resources
+
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+        <ul class="nav navbar-nav navbar-right user-nav">
+            <li class="dropdown profile_menu">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <img alt="Avatar" src="../../Content/images/4.jpg" style="width: 35px;" /><span>@User.Identity.Name</span>
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a href='@Url.Action("Index", "Manage")'>@Texts.Profile</a></li>
+                <li class="divider"></li>
+                <li><a href="javascript:document.getElementById('logoutForm').submit()">@Texts.Logout</a></li>
+            </ul>
+        </li>
+    </ul>
+    }
+    <ul class="nav navbar-nav navbar-right not-nav">
+        <li class="button dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <i class="fa fa-bell " data-toggle="tooltip" data-original-title="@Texts.Notifications" data-placement="bottom"></i>
+                <span id="messages-counter" class="bubble"></span>
+            </a>
+            <ul class="dropdown-menu messages" style="max-width: 368px; width: 368px;">
+                <li>
+                    <div id="messages-content" class="content">
+                    </div>
+                    <ul class="foot">
+                        <li><a href="@Url.Action("Index", "Message")">@Texts.Menu_SeeAllMessages</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right user-nav">
+        <li class="dropdown profile_menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <span>@Texts.Visit</span> <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a href='@Url.Action("Login", "Account")'>@Texts.Login</a></li>
+                <li><a href='@Url.Action("Register", "Account")'>@Texts.Register</a></li>
+            </ul>
+        </li>
+    </ul>
+}

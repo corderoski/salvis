@@ -1,0 +1,120 @@
+﻿@using Salvis.Resources
+@using Salvis.App.Web.Helpers
+@model IEnumerable<Salvis.App.Web.Models.MonthlyReportModel>
+@{
+    ViewBag.Title = Texts.MonthlyViewer;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@section Title
+{
+    @Texts.MonthlyViewer
+}
+
+@section Header
+{
+    @Styles.Render("~/bundles/niftymodals/css")
+    @Styles.Render("~/bundles/datespicker/css")
+}
+
+<div class="well">
+    @*@Html.GetContent("Apps.Budget_1")*@
+    La siguiente herramienta te permite registrar todos los gastos que has tenido en el mes.
+    Así, podrás tener un análisis gráfico de historial de egresos de manera categorizada y ordenada.
+</div>
+
+<div class="col-sm-10 col-md-10">
+
+    <div class="content">
+        <div class="col-sm-4">
+            <label>Seleccione el tipo de vista</label>
+        </div>
+        <div class="col-sm-4">
+            @Html.DropDownList("monthlyViewMode", new SelectList(new int[0]), Texts.SelectOption, new { @Class = "form-control " })
+        </div>
+    </div>
+
+    <div class="col-sm-5 col-md-5">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    Histórico
+                    <span class="">
+                        <button type="button" id="addItemRow" class="btn btn-primary btn-xs">
+                            <i class="fa fa-align-right fa-plus-circle"></i>@Texts.Add
+                        </button>
+                    </span>
+                </h4>
+            </div>
+            <div class="panel-body">
+                <div class="col-sm-12 col-md-12">
+                    @using (Ajax.BeginForm("AddMonthlyReport", "Apps", new AjaxOptions { InsertionMode = InsertionMode.Replace, HttpMethod = "POST", OnBegin = "operationBegin", OnSuccess = "operationComplete" }, new { Id = "formItems", @class = "form-horizontal" }))
+                    {
+
+                        @Html.AntiForgeryToken()
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+
+<!-- Delete Modal -->
+<div class="md-modal colored-header warning md-effect-10" id="create-item">
+    <div class="md-content">
+        <div class="modal-header">
+            <h3>Header</h3>
+            <button type="button" class="close md-close" data-dismiss="modal" aria-hidden="true">
+                &times;
+            </button>
+        </div>
+        <div class="modal-body">
+
+            <div class="col-sm-2 col-md-2">
+                Name
+                @Html.TextBox(string.Format("MonthlyReportModel[{0}].Name", Model), "", new Dictionary<string, object>() { { "data-parsley-multiple", "notif" }, { "placeHolder", "Name" } })
+            </div>
+            <div class="col-sm-3 col-md-3">
+                Description
+                @Html.TextBox(string.Format("MonthlyReportModel[{0}].Description", Model), "", new Dictionary<string, object>() { { "data-parsley-multiple", "notif" }, { "placeHolder", @Texts.Description } })
+            </div>
+            <div class="col-sm-3 col-md-3">
+                Category
+                @Html.TextBox(string.Format("MonthlyReportModel[{0}].Category", Model), "", new Dictionary<string, object>() { { "data-parsley-multiple", "notif" }, { "placeHolder", @Texts.Category } })
+            </div>
+            <div class="col-sm-2 col-md-2">
+                Amount
+                @Html.TextBox(string.Format("MonthlyReportModel[{0}].Amount", Model), "", new Dictionary<string, object>() { { "data-parsley-multiple", "notif" }, { "placeHolder", "2190.95" } })
+            </div>
+
+        </div>
+        <div class="modal-footer">
+            <button id="btnCloseConfirm" type="button" class="btn btn-default btn-flat md-close" data-dismiss="modal">
+                @Texts.Cancel
+            </button>
+            <button id="btnDelete" type="button" class="btn btn-danger btn-flat">@Texts.Delete</button>
+        </div>
+    </div>
+</div>
+
+
+
+
+@section DocumentReady
+{
+    initialize();
+}
+
+@section ScriptsReferences
+{
+    @Scripts.Render("~/bundles/apps")
+    @Scripts.Render("~/bundles/datespicker")
+    @Scripts.Render("~/bundles/flot")
+    @Scripts.Render("~/bundles/sparkline")
+    @Scripts.Render("~/bundles/niftymodals")
+    @Scripts.Render("~/bundles/parsley")
+}

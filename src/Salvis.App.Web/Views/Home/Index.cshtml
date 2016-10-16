@@ -1,0 +1,17 @@
+﻿@using Resources
+@using Salvis.Resources
+@using Salvis.App.Web.Helpers
+
+@{
+    ViewBag.Title = Texts.Home;
+}
+
+@section Title
+{
+    ¡@Texts.WelcomeTo <strong class="special-text">@Strings.AppName</strong>!
+}
+
+<div class="cl-mcont">
+    @Html.GetContent("Home_Index", Culture)
+</div>
+

@@ -1,0 +1,32 @@
+﻿@using Salvis.Resources
+@model IEnumerable<Salvis.App.Web.Models.GoalModel>
+<div id="goals-list" class="scrollbar scrollbarStyle">
+    @Html.AntiForgeryToken()
+    <div class="list-group">
+        @foreach (var entity in Model)
+        {
+            <div>
+                <div id="list-group-item-close" class="close md-trigger" data-modal="delete-confirm" data-salvis="@entity.Id">X</div>
+                <a href="#" class="list-group-item " parentdata="@entity.Id" parenttypedata="@entity.Type" onclick="GetDetails(this)">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h3 class="text-primary">@entity.Name</h3>
+                        </div>
+                         <div class="text-center">
+                            @entity.Description
+                        </div>
+                        <div class="col-sm-6 col-md-6 col-lg-6">
+                            <p><b>Categoria:</b> xxx</p>
+                            <p><b>@Texts.Amount:</b> @entity.Amount.ToString(Salvis.Framework.Helpers.FormatHelper.MONEY_CURRENCY_LETTER)</p>
+                        </div>
+                        <div class="col-sm-6 col-md-6  col-lg-6">
+                            <p><b>@Texts.Goal_SavingDateInit</b> @entity.StartDate.ToString(Salvis.Framework.Helpers.FormatHelper.DATE_FORMAT) </p>
+                            <p>
+                                <b>@Texts.Goal_SavingDateEnd</b> @entity.EndDate.ToString(Salvis.Framework.Helpers.FormatHelper.DATE_FORMAT) </p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        }
+    </div>
+</div>

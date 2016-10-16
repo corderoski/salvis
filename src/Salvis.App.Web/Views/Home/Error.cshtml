@@ -1,0 +1,29 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+@{
+    ViewBag.Title = "Error";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Title
+{
+    Error
+}
+
+<div class="container">
+    <div>
+        <h2 class="special-text">:O Ha ocurrido un error </h2>
+        <h3>Y ninguno de los dos sabemos porqué...</h3>
+        <hr />
+    </div>
+</div>
+
+@if (Request.IsLocal)
+{
+    <h2>An error occurred while processing your request.</h2>
+    <h3>@Model.ActionName</h3>
+    <p>@Model.Exception.Message</p>
+    <p>@Model.Exception.StackTrace</p>
+    {
+        //Salvis.UI.Web.Models.LoggerModel.Add(Server, Model.ActionName, Model.Exception.Message + Environment.NewLine + Model.Exception.StackTrace);
+    }
+}

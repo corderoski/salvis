@@ -1,0 +1,95 @@
+﻿@model IEnumerable<Salvis.Framework.OnlineServices.Entities.IProviderResult>
+@using Salvis.Resources
+@{
+    ViewBag.Title = "Bases de Datos";
+}
+
+@section Header{
+    @Styles.Render("~/bundles/rssfeed/css")
+}
+
+@section Title{
+    @ViewBag.Title
+}
+
+<div class="cl-mcont">
+    <div class="form-group col-sm-10">
+        <div class="col-sm-6">
+            @using (Html.BeginForm("Index", "Library", FormMethod.Get))
+            {
+                <div class="col-sm-4">
+                    @Texts.SearchInputProveedor
+                </div>
+                <div class="col-sm-6">
+                    @Html.DropDownList("proveedor", Enumerable.Empty<SelectListItem>())
+                </div>
+                <div class="col-sm-4">
+                    @Texts.SearchInputOptions
+                </div>
+                <div class="col-sm-6">
+                    @Html.DropDownList("options", Enumerable.Empty<SelectListItem>())
+                </div>
+                <div class="clearfix"></div>
+                <div class="col-sm-4">
+                    @Texts.SearchInputTerm
+                </div>
+                <div class="col-sm-6">@Html.TextBox("term")</div>
+                <div class="clearfix"></div>
+                <div class="col-sm-offset-4">
+                    <input class="btn-default" type="submit" value="Buscar" />
+                </div>
+            }
+        </div>
+    </div>
+    <div class="col-sm-6">
+        @if (Model != null)
+        {
+            foreach (var m in Model)
+            {
+                <div class="col-sm-10">
+                    <a href="@m.Reference">@m.Name</a>
+                    <p>@Html.Raw(@m.Description)</p>
+                </div>
+                <div class="clearfix"></div>
+            }
+        }
+    </div>
+</div>
+<div class="clearfix"></div>
+<div class="cl-mcont">
+    <div class="col-sm-5">
+        <a class="twitter-timeline" href="https://twitter.com/Corderoski/lists/salvis-sources"
+           data-widget-id="533835663951405056">Tweets from https://twitter.com/Corderoski/lists/salvis-sources</a>
+        <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + "://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");</script>
+    </div>
+    <div id="f1" class="col-sm-6">
+    </div>
+</div>
+
+<div class="cl-mcont">
+    <div id="f2" class="col-sm-5 col-md-5">
+    </div>
+    <div id="f3" class="col-sm-5 col-md-5">
+    </div>
+</div>
+
+@section ScriptsReferences{
+    @Scripts.Render("~/bundles/rssfeed")
+    <script>
+        (function () {
+            Salvis.UI.fillDropListWithRequest('#proveedor', "@Url.Action("GetTypeDescription", "Comm", new { cat = Salvis.Entities.Catalog.API_PROVIVDER })");
+            Salvis.UI.fillDropListWithRequest('#options', "@Url.Action("GetTypesWithValue", "Comm")?cat=" + $("#proveedor").text());
+
+            $('#f1').rssfeed('http://feeds.planeatusfinanzas.com/planeatusfinanzas', {
+                limit: 5
+            });
+
+            $('#f2').rssfeed('http://www.eldinero.com.do/feed/', {
+                limit: 5
+            });
+            $('#f3').rssfeed('http://educacionfinanciera.sb.gob.do/feed/', {
+                limit: 5
+            });
+        })();
+    </script>
+}

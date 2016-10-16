@@ -1,0 +1,64 @@
+﻿@using Salvis.Resources
+@{
+    ViewBag.Title = "Configurations";
+}
+
+@section Title
+{
+    @ViewBag.Title
+}
+
+
+<div class="cl-mcont">
+
+    <div class="col-sm-6">
+        <div class="row">
+            <div>
+                <h2>@Texts.Notifications</h2>
+                <hr />
+            </div>
+            <div class="col-sm-4">
+                <input name="chkSms" type="checkbox" />
+                <label for="">Recibir Vía SMS</label>
+            </div>
+            <div class="col-sm-3">
+                <input name="txtTel" type="tel" placeholder="809-555-0000" />
+            </div>
+        </div>
+        <div class="row">
+            <div>
+                <h2>@Texts.Currency</h2>
+                <hr />
+            </div>
+            <div>
+                <div class="col-sm-3">
+                    <select name="ddlCurrency" class="form-control">
+                        <option value="-1">--</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+@section ScriptsReferences
+{
+
+    <script>
+        (function () {
+            $('div[name="chkSms"]').change(function () {
+                $('div[name="txtTel"]').enable = $('div[name="chkSms"]').val() == "on" ? true : false;
+            });
+            var url = "@Url.Action("GetTypesWithValue", "Comm", new { cat = Salvis.Entities.Catalog.APP_CURRENCY })";
+            $.getJSON(url, function (data) {
+                $.each(data, function (item, value) {
+                    $('select[name="ddlCurrency"]').append(
+                              $('<option>').attr('value', value.Id).text(value.Value)
+                          );
+                });
+            }).fail(JsonRError);
+        })();
+    </script>
+}

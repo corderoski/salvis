@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1531E8B6-7D14-4B72-87AC-65BD8AF01AC3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Salvis.DataLayer.Repositories</RootNamespace>
+    <AssemblyName>Salvis.DataLayer.IRepositories</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'JCorderoski|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\JCorderoski\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="IRecurrentRepository.cs" />
+    <Compile Include="IDebtRepository.cs" />
+    <Compile Include="DataLayerException.cs" />
+    <Compile Include="Factory\IDataLayerExceptionFactory.cs" />
+    <Compile Include="ICatalogRepository.cs" />
+    <Compile Include="IDataLayerException.cs" />
+    <Compile Include="IGoalRepository.cs" />
+    <Compile Include="IGroupDetailRepository.cs" />
+    <Compile Include="IGroupRepository.cs" />
+    <Compile Include="IMessageRepository.cs" />
+    <Compile Include="INotificationRepository.cs" />
+    <Compile Include="ITipRepository.cs" />
+    <Compile Include="IOperationRepository.cs" />
+    <Compile Include="IPlanificationRepository.cs" />
+    <Compile Include="IRepositoryBase.cs" />
+    <Compile Include="IUserConfigurationRepository.cs" />
+    <Compile Include="IUserRepository.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ISavingRepository.cs" />
+    <Compile Include="TypeNotAsExpectedException.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Salvis.Entities\Salvis.Entities.csproj">
+      <Project>{d8bae45e-2be7-4e89-8fe8-05bc26d410f4}</Project>
+      <Name>Salvis.Entities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

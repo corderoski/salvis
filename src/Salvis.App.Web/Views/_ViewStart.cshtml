@@ -1,0 +1,27 @@
+﻿@using System.Globalization
+@using Salvis.Framework.Helpers
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var lang = Session["Lang"];
+    if (lang != null)
+    {
+        Culture = UICulture = lang.ToString();
+    }
+    else
+    {
+        if (!UICulture.StartsWith("es") && !UICulture.StartsWith("en"))
+        {
+            UICulture = FormatHelper.APP_INT_CURRENCY;
+        }
+
+        if (!Culture.Equals(UICulture))
+        {
+            Culture = UICulture;
+        }
+
+        CultureInfo.DefaultThreadCurrentCulture = new CultureInfo(Culture);
+        Session.Add("Lang", Culture);
+    }
+
+}
